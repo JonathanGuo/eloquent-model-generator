@@ -1,10 +1,10 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Model;
+namespace JonathanGuo\EloquentModelGenerator\Model;
 
 /**
  * Class HasOne
- * @package Krlove\EloquentModelGenerator\Model
+ * @package JonathanGuo\EloquentModelGenerator\Model
  */
 class HasOne extends Relation
 {

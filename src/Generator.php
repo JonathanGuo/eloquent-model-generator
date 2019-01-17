@@ -1,13 +1,13 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator;
+namespace JonathanGuo\EloquentModelGenerator;
 
-use Krlove\EloquentModelGenerator\Exception\GeneratorException;
-use Krlove\CodeGenerator\Model\ClassModel;
+use JonathanGuo\EloquentModelGenerator\Exception\GeneratorException;
+use JonathanGuo\CodeGenerator\Model\ClassModel;
 
 /**
  * Class Generator
- * @package Krlove\Generator
+ * @package JonathanGuo\Generator
  */
 class Generator
 {

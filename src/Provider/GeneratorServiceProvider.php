@@ -1,21 +1,21 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Provider;
+namespace JonathanGuo\EloquentModelGenerator\Provider;
 
 use Illuminate\Support\ServiceProvider;
-use Krlove\EloquentModelGenerator\Command\GenerateModelCommand;
-use Krlove\EloquentModelGenerator\EloquentModelBuilder;
-use Krlove\EloquentModelGenerator\Processor\CustomPrimaryKeyProcessor;
-use Krlove\EloquentModelGenerator\Processor\CustomPropertyProcessor;
-use Krlove\EloquentModelGenerator\Processor\ExistenceCheckerProcessor;
-use Krlove\EloquentModelGenerator\Processor\FieldProcessor;
-use Krlove\EloquentModelGenerator\Processor\NamespaceProcessor;
-use Krlove\EloquentModelGenerator\Processor\RelationProcessor;
-use Krlove\EloquentModelGenerator\Processor\TableNameProcessor;
+use JonathanGuo\EloquentModelGenerator\Command\GenerateModelCommand;
+use JonathanGuo\EloquentModelGenerator\EloquentModelBuilder;
+use JonathanGuo\EloquentModelGenerator\Processor\CustomPrimaryKeyProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\CustomPropertyProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\ExistenceCheckerProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\FieldProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\NamespaceProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\RelationProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\TableNameProcessor;
 
 /**
  * Class GeneratorServiceProvider
- * @package Krlove\EloquentModelGenerator\Provider
+ * @package JonathanGuo\EloquentModelGenerator\Provider
  */
 class GeneratorServiceProvider extends ServiceProvider
 {

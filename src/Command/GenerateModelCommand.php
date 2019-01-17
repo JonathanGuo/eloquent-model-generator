@@ -1,24 +1,24 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Command;
+namespace JonathanGuo\EloquentModelGenerator\Command;
 
 use Illuminate\Config\Repository as AppConfig;
 use Illuminate\Console\Command;
-use Krlove\EloquentModelGenerator\Config;
-use Krlove\EloquentModelGenerator\Generator;
+use JonathanGuo\EloquentModelGenerator\Config;
+use JonathanGuo\EloquentModelGenerator\Generator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class GenerateModelCommand
- * @package Krlove\EloquentModelGenerator\Command
+ * @package JonathanGuo\EloquentModelGenerator\Command
  */
 class GenerateModelCommand extends Command
 {
     /**
      * @var string
      */
-    protected $name = 'krlove:generate:model';
+    protected $name = 'JonathanGuo:generate:model';
 
     /**
      * @var Generator

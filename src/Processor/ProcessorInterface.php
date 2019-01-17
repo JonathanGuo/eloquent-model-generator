@@ -1,13 +1,13 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Processor;
+namespace JonathanGuo\EloquentModelGenerator\Processor;
 
-use Krlove\EloquentModelGenerator\Config;
-use Krlove\EloquentModelGenerator\Model\EloquentModel;
+use JonathanGuo\EloquentModelGenerator\Config;
+use JonathanGuo\EloquentModelGenerator\Model\EloquentModel;
 
 /**
  * Interface ProcessorInterface
- * @package Krlove\EloquentModelGenerator\Processor
+ * @package JonathanGuo\EloquentModelGenerator\Processor
  */
 interface ProcessorInterface
 {

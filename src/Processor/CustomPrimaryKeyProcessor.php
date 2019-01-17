@@ -1,17 +1,17 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Processor;
+namespace JonathanGuo\EloquentModelGenerator\Processor;
 
 use Illuminate\Database\DatabaseManager;
-use Krlove\CodeGenerator\Model\DocBlockModel;
-use Krlove\CodeGenerator\Model\PropertyModel;
-use Krlove\EloquentModelGenerator\Config;
-use Krlove\EloquentModelGenerator\Model\EloquentModel;
-use Krlove\EloquentModelGenerator\TypeRegistry;
+use JonathanGuo\CodeGenerator\Model\DocBlockModel;
+use JonathanGuo\CodeGenerator\Model\PropertyModel;
+use JonathanGuo\EloquentModelGenerator\Config;
+use JonathanGuo\EloquentModelGenerator\Model\EloquentModel;
+use JonathanGuo\EloquentModelGenerator\TypeRegistry;
 
 /**
  * Class CustomPrimaryKeyProcessor
- * @package Krlove\EloquentModelGenerator\Processor
+ * @package JonathanGuo\EloquentModelGenerator\Processor
  */
 class CustomPrimaryKeyProcessor implements ProcessorInterface
 {

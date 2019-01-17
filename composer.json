@@ -1,23 +1,23 @@
 {
-    "name": "krlove/eloquent-model-generator",
+    "name": "JonathanGuo/eloquent-model-generator",
     "description": "Eloquent Model Generator",
     "version": "1.3.1",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Krlove\\EloquentModelGenerator\\": "src/"
+            "JonathanGuo\\EloquentModelGenerator\\": "src/"
         }
     },
     "require": {
         "illuminate/database": "^5.0",
         "illuminate/support": "^5.0",
         "doctrine/dbal": "^2.5",
-        "krlove/code-generator": "^1.0"
+        "JonathanGuo/code-generator": "^1.0"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider"
+                "JonathanGuo\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider"
             ]
         }
     }

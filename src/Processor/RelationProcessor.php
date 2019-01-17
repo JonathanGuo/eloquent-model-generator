@@ -1,6 +1,6 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Processor;
+namespace JonathanGuo\EloquentModelGenerator\Processor;
 
 use Doctrine\DBAL\Schema\Table;
 use Illuminate\Database\DatabaseManager;
@@ -9,22 +9,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany as EloquentBelongsToMan
 use Illuminate\Database\Eloquent\Relations\HasMany as EloquentHasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne as EloquentHasOne;
 use Illuminate\Support\Str;
-use Krlove\CodeGenerator\Model\DocBlockModel;
-use Krlove\CodeGenerator\Model\MethodModel;
-use Krlove\CodeGenerator\Model\VirtualPropertyModel;
-use Krlove\EloquentModelGenerator\Config;
-use Krlove\EloquentModelGenerator\Exception\GeneratorException;
-use Krlove\EloquentModelGenerator\Helper\EmgHelper;
-use Krlove\EloquentModelGenerator\Model\BelongsTo;
-use Krlove\EloquentModelGenerator\Model\BelongsToMany;
-use Krlove\EloquentModelGenerator\Model\EloquentModel;
-use Krlove\EloquentModelGenerator\Model\HasMany;
-use Krlove\EloquentModelGenerator\Model\HasOne;
-use Krlove\EloquentModelGenerator\Model\Relation;
+use JonathanGuo\CodeGenerator\Model\DocBlockModel;
+use JonathanGuo\CodeGenerator\Model\MethodModel;
+use JonathanGuo\CodeGenerator\Model\VirtualPropertyModel;
+use JonathanGuo\EloquentModelGenerator\Config;
+use JonathanGuo\EloquentModelGenerator\Exception\GeneratorException;
+use JonathanGuo\EloquentModelGenerator\Helper\EmgHelper;
+use JonathanGuo\EloquentModelGenerator\Model\BelongsTo;
+use JonathanGuo\EloquentModelGenerator\Model\BelongsToMany;
+use JonathanGuo\EloquentModelGenerator\Model\EloquentModel;
+use JonathanGuo\EloquentModelGenerator\Model\HasMany;
+use JonathanGuo\EloquentModelGenerator\Model\HasOne;
+use JonathanGuo\EloquentModelGenerator\Model\Relation;
 
 /**
  * Class RelationProcessor
- * @package Krlove\EloquentModelGenerator\Processor
+ * @package JonathanGuo\EloquentModelGenerator\Processor
  */
 class RelationProcessor implements ProcessorInterface
 {

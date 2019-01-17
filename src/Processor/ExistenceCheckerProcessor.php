@@ -1,15 +1,15 @@
 <?php
 
-namespace Krlove\EloquentModelGenerator\Processor;
+namespace JonathanGuo\EloquentModelGenerator\Processor;
 
 use Illuminate\Database\DatabaseManager;
-use Krlove\EloquentModelGenerator\Config;
-use Krlove\EloquentModelGenerator\Exception\GeneratorException;
-use Krlove\EloquentModelGenerator\Model\EloquentModel;
+use JonathanGuo\EloquentModelGenerator\Config;
+use JonathanGuo\EloquentModelGenerator\Exception\GeneratorException;
+use JonathanGuo\EloquentModelGenerator\Model\EloquentModel;
 
 /**
  * Class ExistenceCheckerProcessor
- * @package Krlove\EloquentModelGenerator\Processor
+ * @package JonathanGuo\EloquentModelGenerator\Processor
  */
 class ExistenceCheckerProcessor implements ProcessorInterface
 {
