@@ -2,6 +2,9 @@
 
 Eloquent Model Generator is a tool based on [Code Generator](https://github.com/JonathanGuo/code-generator) for generating Eloquent models.
 
+## Why I created another generator?
+This package is based on [krlove/code-generator](https://github.com/krlove/eloquent-model-generator). The maintainer looks like not responding to GitHub any longer. So I mirrored the repo and do some customisation to meet my needs.   
+
 ## Installation
 Step 1. Add Eloquent Model Generator to your project:
 ```
