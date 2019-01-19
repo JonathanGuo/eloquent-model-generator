@@ -36,6 +36,7 @@ class Generator
      * @param Config $config
      * @return ClassModel
      * @throws GeneratorException
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function generateModel(Config $config)
     {
@@ -84,6 +85,7 @@ class Generator
 
     /**
      * @param Config $config
+     * @throws \Doctrine\DBAL\DBALException
      */
     protected function registerUserTypes(Config $config)
     {

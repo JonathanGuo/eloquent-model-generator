@@ -29,7 +29,6 @@ class EloquentModelBuilder
     /**
      * @param Config $config
      * @return EloquentModel
-     * @throws GeneratorException
      */
     public function createModel(Config $config)
     {

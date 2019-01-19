@@ -49,6 +49,7 @@ class FieldProcessor implements ProcessorInterface
         $primaryColumnNames = $tableDetails->getPrimaryKey() ? $tableDetails->getPrimaryKey()->getColumns() : [];
 
         $columnNames = [];
+        $casts = [];
         foreach ($tableDetails->getColumns() as $column) {
             $model->addProperty(new VirtualPropertyModel(
                 $column->getName(),
@@ -58,13 +59,23 @@ class FieldProcessor implements ProcessorInterface
             if (!in_array($column->getName(), $primaryColumnNames)) {
                 $columnNames[] = $column->getName();
             }
+
+            $casts[$column->getName()] = $this->resolveCast($column);
         }
 
+        // Add fillable
         $fillableProperty = new PropertyModel('fillable');
         $fillableProperty->setAccess('protected')
             ->setValue($columnNames)
             ->setDocBlock(new DocBlockModel('@var array'));
         $model->addProperty($fillableProperty);
+
+        // Add casts
+        $castsProperty = new PropertyModel('casts');
+        $castsProperty->setAccess('protected')
+            ->setValue($casts)
+            ->setDocBlock(new DocBlockModel('@var array'));
+        $model->addProperty($castsProperty);
 
         return $this;
     }
@@ -75,5 +86,33 @@ class FieldProcessor implements ProcessorInterface
     public function getPriority()
     {
         return 5;
+    }
+
+    private function resolveCast(\Doctrine\DBAL\Schema\Column $column)
+    {
+        $type = $column->getType();
+
+        $typeName = strtolower($type->getName());
+        switch ($typeName) {
+            case 'int':
+                return 'integer';
+            case 'decimal':
+                return 'decimal:' . $column->getScale();
+            case 'json':
+                return 'array';
+            /**
+             * Including:
+             *  - real
+             *  - float
+             *  - double
+             *  - string
+             *  - boolean
+             *  - date
+             *  - datetime
+             *  - timestamp
+             */
+            default:
+                return $typeName;
+        }
     }
 }
