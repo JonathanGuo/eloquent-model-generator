@@ -12,7 +12,7 @@
         "illuminate/database": "^5.0",
         "illuminate/support": "^5.0",
         "doctrine/dbal": "^2.5",
-        "JonathanGuo/code-generator": "^1.0"
+        "jonathanguo/code-generator": "^1.0"
     },
     "extra": {
         "laravel": {
