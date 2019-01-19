@@ -18,7 +18,7 @@ class GenerateModelCommand extends Command
     /**
      * @var string
      */
-    protected $name = 'JonathanGuo:generate:model';
+    protected $name = 'generate:model';
 
     /**
      * @var Generator
@@ -45,6 +45,7 @@ class GenerateModelCommand extends Command
 
     /**
      * Executes the command
+     * @throws \JonathanGuo\EloquentModelGenerator\Exception\GeneratorException
      */
     public function fire()
     {
@@ -57,6 +58,7 @@ class GenerateModelCommand extends Command
 
     /**
      * Add support for Laravel 5.5
+     * @throws \JonathanGuo\EloquentModelGenerator\Exception\GeneratorException
      */
     public function handle()
     {
