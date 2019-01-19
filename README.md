@@ -8,7 +8,7 @@ This package is based on [krlove/code-generator](https://github.com/krlove/eloqu
 ## Installation
 Step 1. Add Eloquent Model Generator to your project:
 ```
-composer require JonathanGuo/eloquent-model-generator --dev
+composer require jonathanguo/eloquent-model-generator --dev
 ```
 Step 2. Register `GeneratorServiceProvider`:
 ```php
