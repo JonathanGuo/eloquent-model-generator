@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'namespace'       => 'App',
+    'namespace'       => 'App\\Models',
     'base_class_name' => \Illuminate\Database\Eloquent\Model::class,
     'output_path'     => null,
     'no_timestamps'   => null,
