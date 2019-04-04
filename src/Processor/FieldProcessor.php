@@ -47,7 +47,7 @@ class FieldProcessor implements ProcessorInterface
 
         $tableDetails       = $schemaManager->listTableDetails($prefix . $model->getTableName());
         $primaryColumnNames = $tableDetails->getPrimaryKey() ? $tableDetails->getPrimaryKey()->getColumns() : [];
-        $timestampColumns = ['created_at', 'updated_at'];
+        $timestampColumns = ['created_at', 'updated_at', 'deleted_at'];
         $skippingColumns = array_merge($primaryColumnNames, $timestampColumns);
 
         $fillable = [];
