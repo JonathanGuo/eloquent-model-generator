@@ -2,6 +2,7 @@
 
 namespace JonathanGuo\EloquentModelGenerator\Provider;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use JonathanGuo\EloquentModelGenerator\Command\GenerateModelCommand;
 use JonathanGuo\EloquentModelGenerator\EloquentModelBuilder;
@@ -30,18 +31,18 @@ class GeneratorServiceProvider extends ServiceProvider
             GenerateModelCommand::class,
         ]);
 
-        $this->app->tag([
-            ExistenceCheckerProcessor::class,
-            FieldProcessor::class,
-            NamespaceProcessor::class,
-            RelationProcessor::class,
-            CustomPropertyProcessor::class,
-            TableNameProcessor::class,
-            CustomPrimaryKeyProcessor::class,
-        ], self::PROCESSOR_TAG);
-
-        $this->app->bind(EloquentModelBuilder::class, function ($app) {
-            return new EloquentModelBuilder($app->tagged(self::PROCESSOR_TAG));
+        $this->app->bind(EloquentModelBuilder::class, function (Application $app) {
+            return new EloquentModelBuilder(array_map(function ($processor) use ($app) {
+                return $app->make($processor);
+            }, [
+                ExistenceCheckerProcessor::class,
+                FieldProcessor::class,
+                NamespaceProcessor::class,
+                RelationProcessor::class,
+                CustomPropertyProcessor::class,
+                TableNameProcessor::class,
+                CustomPrimaryKeyProcessor::class,
+            ]));
         });
     }
 }
