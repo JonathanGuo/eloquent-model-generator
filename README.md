@@ -24,21 +24,21 @@ Step 3. Configure your database connection.
 ## Usage
 Use
 ```
-php artisan JonathanGuo:generate:model User
+php artisan generate:model User
 ```
 to generate a model class. Generator will look for table with name `users` and generate a model for it.
 
 ### table-name
 Use `table-name` option to specify another table name:
 ```
-php artisan JonathanGuo:generate:model User --table-name=user
+php artisan generate:model User --table-name=user
 ```
 In this case generated model will contain `protected $table = 'user'` property.
 
 ### output-path
-Generated file will be saved into `app` directory of your application and have `App` namespace by default. If you want to change the destination and namespace, supply the `output-path` and `namespace` options respectively:
+Generated file will be saved into `app/Models` directory of your application and have `App\Models` namespace by default. If you want to change the destination and namespace, supply the `output-path` and `namespace` options respectively:
 ```
-php artisan JonathanGuo:generate:model User --output-path=/full/path/to/output/directory --namespace=Some\\Other\\NSpace
+php artisan generate:model User --output-path=/full/path/to/output/directory --namespace=Some\\Other\\NSpace
 ```
 `output-path` can be absolute path or relative to project's `app` directory. Absolute path must start with `/`:
 - `/var/www/html/app/Models` - absolute path
@@ -48,13 +48,13 @@ php artisan JonathanGuo:generate:model User --output-path=/full/path/to/output/d
 ### base-class-name
 By default generated class will be extended from `Illuminate\Database\Eloquent\Model`. To change the base class specify `base-class-name` option:
 ```
-php artisan JonathanGuo:generate:model User --base-class-name=Some\\Other\\Base\\Model
+php artisan generate:model User --base-class-name=Some\\Other\\Base\\Model
 ```
 
 ### backup
 Save existing model before generating a new one
 ```
-php artisan JonathanGuo:generate:model User --backup
+php artisan generate:model User --backup
 ```
 If `User.php` file already exist, it will be renamed into `User.php~` first and saved at the same directory. After than a new `User.php` will be generated.
 
@@ -128,7 +128,7 @@ CREATE TABLE `user` (
 ```
 Command:
 ```
-php artisan JonathanGuo:generate:model User  --table-name=user
+php artisan generate:model User  --table-name=user
 ```
 Result:
 ```php
