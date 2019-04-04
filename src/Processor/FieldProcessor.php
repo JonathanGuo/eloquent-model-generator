@@ -47,8 +47,10 @@ class FieldProcessor implements ProcessorInterface
 
         $tableDetails       = $schemaManager->listTableDetails($prefix . $model->getTableName());
         $primaryColumnNames = $tableDetails->getPrimaryKey() ? $tableDetails->getPrimaryKey()->getColumns() : [];
+        $timestampColumns = ['created_at', 'updated_at'];
+        $skippingColumns = array_merge($primaryColumnNames, $timestampColumns);
 
-        $columnNames = [];
+        $fillable = [];
         $casts = [];
         foreach ($tableDetails->getColumns() as $column) {
             $model->addProperty(new VirtualPropertyModel(
@@ -56,8 +58,8 @@ class FieldProcessor implements ProcessorInterface
                 $this->typeRegistry->resolveType($column->getType()->getName())
             ));
 
-            if (!in_array($column->getName(), $primaryColumnNames)) {
-                $columnNames[] = $column->getName();
+            if (!in_array($column->getName(), $skippingColumns)) {
+                $fillable[] = $column->getName();
             }
 
             $casts[$column->getName()] = $this->resolveCast($column);
@@ -66,7 +68,7 @@ class FieldProcessor implements ProcessorInterface
         // Add fillable
         $fillableProperty = new PropertyModel('fillable');
         $fillableProperty->setAccess('protected')
-            ->setValue($columnNames)
+            ->setValue($fillable)
             ->setDocBlock(new DocBlockModel('@var array'));
         $model->addProperty($fillableProperty);
 
