@@ -2,6 +2,7 @@
 
 namespace JonathanGuo\EloquentModelGenerator\Processor;
 
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Illuminate\Database\DatabaseManager;
 use JonathanGuo\CodeGenerator\Model\DocBlockModel;
 use JonathanGuo\CodeGenerator\Model\PropertyModel;
@@ -43,12 +44,16 @@ class FieldProcessor implements ProcessorInterface
     public function process(EloquentModel $model, Config $config)
     {
         $schemaManager = $this->databaseManager->connection($config->get('connection'))->getDoctrineSchemaManager();
-        $prefix        = $this->databaseManager->connection($config->get('connection'))->getTablePrefix();
+        $prefix = $this->databaseManager->connection($config->get('connection'))->getTablePrefix();
 
-        $tableDetails       = $schemaManager->listTableDetails($prefix . $model->getTableName());
+        $tableDetails = $schemaManager->listTableDetails($prefix . $model->getTableName());
+        $foreignKeys = $schemaManager->listTableForeignKeys($prefix . $model->getTableName());
         $primaryColumnNames = $tableDetails->getPrimaryKey() ? $tableDetails->getPrimaryKey()->getColumns() : [];
         $timestampColumns = ['created_at', 'updated_at', 'deleted_at'];
-        $skippingColumns = array_merge($primaryColumnNames, $timestampColumns);
+        $foreignKeyColumns = array_reduce($foreignKeys, function (array $carry, ForeignKeyConstraint $foreignKeyConstraint) {
+            return array_merge($carry, $foreignKeyConstraint->getColumns());
+        }, []);
+        $skippingColumns = array_merge($primaryColumnNames, $timestampColumns, $foreignKeyColumns);
 
         $fillable = [];
         $casts = [];
