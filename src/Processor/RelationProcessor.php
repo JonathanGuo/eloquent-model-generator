@@ -155,24 +155,30 @@ class RelationProcessor implements ProcessorInterface
      */
     protected function addRelation(EloquentModel $model, Relation $relation)
     {
-        $relationClass = Str::singular(Str::studly($relation->getTableName()));
+        $tableName = $relation->getTableName();
+        $relationClass = Str::singular(Str::studly($tableName));
         if ($relation instanceof HasOne) {
-            $name = Str::singular(Str::camel($relation->getTableName()));
+            $name = Str::singular(Str::camel($tableName));
             $docBlock = sprintf('@return \%s', EloquentHasOne::class);
 
             $virtualPropertyType = $relationClass;
         } elseif ($relation instanceof HasMany) {
-            $name = Str::plural(Str::camel($relation->getTableName()));
+            $name = Str::plural(Str::camel($tableName));
             $docBlock = sprintf('@return \%s', EloquentHasMany::class);
 
             $virtualPropertyType = sprintf('%s[]', $relationClass);
         } elseif ($relation instanceof BelongsTo) {
-            $name = Str::singular(Str::camel($relation->getTableName()));
+            $foreignColumn = $relation->getForeignColumnName();
+            $friendlyForeignColumnName = strtolower(substr($foreignColumn, '-3')) === '_id'
+                ? substr($foreignColumn, 0, strlen($foreignColumn) - 3)
+                : $foreignColumn;
+            $relationName = $friendlyForeignColumnName !== $tableName ? $friendlyForeignColumnName : $tableName;
+            $name = Str::singular(Str::camel(Str::plural($relationName)));
             $docBlock = sprintf('@return \%s', EloquentBelongsTo::class);
 
             $virtualPropertyType = $relationClass;
         } elseif ($relation instanceof BelongsToMany) {
-            $name = Str::plural(Str::camel($relation->getTableName()));
+            $name = Str::plural(Str::camel($tableName));
             $docBlock = sprintf('@return \%s', EloquentBelongsToMany::class);
 
             $virtualPropertyType = sprintf('%s[]', $relationClass);
