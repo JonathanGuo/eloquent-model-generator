@@ -55,8 +55,7 @@ class Config
      */
     protected function merge(array $high, array $low)
     {
-        foreach ($high as $key => $value)
-        {
+        foreach ($high as $key => $value) {
             if ($value !== null) {
                 $low[$key] = $value;
             }
