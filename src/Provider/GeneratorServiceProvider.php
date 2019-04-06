@@ -45,4 +45,16 @@ class GeneratorServiceProvider extends ServiceProvider
             ]));
         });
     }
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/../Resources/config.php' => config_path('eloquent_model_generator.php'),
+        ]);
+    }
 }
