@@ -102,6 +102,7 @@ class FieldProcessor implements ProcessorInterface
         $typeName = strtolower($type->getName());
         switch ($typeName) {
             case 'int':
+            case 'bigint':
                 return 'integer';
             case 'decimal':
                 return 'decimal:' . $column->getScale();
