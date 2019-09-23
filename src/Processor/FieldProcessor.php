@@ -48,6 +48,7 @@ class FieldProcessor implements ProcessorInterface
 
         $tableDetails = $schemaManager->listTableDetails($prefix . $model->getTableName());
         $foreignKeys = $schemaManager->listTableForeignKeys($prefix . $model->getTableName());
+
         $primaryColumnNames = $tableDetails->getPrimaryKey() ? $tableDetails->getPrimaryKey()->getColumns() : [];
         $timestampColumns = ['created_at', 'updated_at', 'deleted_at'];
         $foreignKeyColumns = array_reduce($foreignKeys, function (array $carry, ForeignKeyConstraint $foreignKeyConstraint) {
