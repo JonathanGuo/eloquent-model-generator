@@ -13,6 +13,7 @@ use JonathanGuo\EloquentModelGenerator\Processor\FieldProcessor;
 use JonathanGuo\EloquentModelGenerator\Processor\NamespaceProcessor;
 use JonathanGuo\EloquentModelGenerator\Processor\RelationProcessor;
 use JonathanGuo\EloquentModelGenerator\Processor\TableNameProcessor;
+use JonathanGuo\EloquentModelGenerator\Processor\TraitProcessor;
 
 /**
  * Class GeneratorServiceProvider
@@ -42,6 +43,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 CustomPropertyProcessor::class,
                 TableNameProcessor::class,
                 CustomPrimaryKeyProcessor::class,
+                TraitProcessor::class,
             ]));
         });
     }
