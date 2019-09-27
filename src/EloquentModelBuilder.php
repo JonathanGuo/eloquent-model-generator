@@ -33,6 +33,7 @@ class EloquentModelBuilder
     public function createModel(Config $config)
     {
         $model = new EloquentModel();
+        $model->setGenerateClassDocBlock(false);
 
         $this->prepareProcessors();
 
