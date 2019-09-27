@@ -4,6 +4,7 @@ namespace JonathanGuo\EloquentModelGenerator\Command;
 
 use Illuminate\Config\Repository as AppConfig;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use JonathanGuo\EloquentModelGenerator\Config;
 use JonathanGuo\EloquentModelGenerator\Generator;
 use Symfony\Component\Console\Input\InputArgument;
@@ -45,6 +46,7 @@ class GenerateModelCommand extends Command
 
     /**
      * Executes the command
+     * @throws \Doctrine\DBAL\DBALException
      * @throws \JonathanGuo\EloquentModelGenerator\Exception\GeneratorException
      */
     public function fire()
@@ -54,10 +56,15 @@ class GenerateModelCommand extends Command
         $model = $this->generator->generateModel($config);
 
         $this->output->writeln(sprintf('Model %s generated', $model->getName()->getName()));
+
+        $fullName = addslashes(sprintf('%s\\%s', $model->getNamespace()->getNamespace(), $model->getName()->getName()));
+
+        Artisan::call('ide-helper:models ' . $fullName . ' -W');
     }
 
     /**
      * Add support for Laravel 5.5
+     * @throws \Doctrine\DBAL\DBALException
      * @throws \JonathanGuo\EloquentModelGenerator\Exception\GeneratorException
      */
     public function handle()
