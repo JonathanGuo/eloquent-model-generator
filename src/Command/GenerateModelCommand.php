@@ -57,9 +57,17 @@ class GenerateModelCommand extends Command
 
         $this->output->writeln(sprintf('Model %s generated', $model->getName()->getName()));
 
-        $fullName = addslashes(sprintf('%s\\%s', $model->getNamespace()->getNamespace(), $model->getName()->getName()));
+        $fullName = sprintf('%s\\%s', $model->getNamespace()->getNamespace(), $model->getName()->getName());
 
-        Artisan::call('ide-helper:models ' . $fullName . ' -W');
+        $this->call(
+            'ide-helper:models',
+            [
+                'model' => [
+                    $fullName,
+                ],
+                '-W' => true,
+            ]
+        );
     }
 
     /**
@@ -77,22 +85,33 @@ class GenerateModelCommand extends Command
      */
     protected function createConfig()
     {
-        $config = [];
+        $config = $this->appConfig->get('eloquent_model_generator', []);
 
         foreach ($this->getArguments() as $argument) {
             $config[$argument[0]] = $this->argument($argument[0]);
         }
+
         foreach ($this->getOptions() as $option) {
-            $value = $this->option($option[0]);
+            $key = $option[0];
+            if ($this->hasOption($key)) {
+                continue;
+            }
+
+            $value = $this->option($key);
             if ($option[2] == InputOption::VALUE_NONE && $value === false) {
                 $value = null;
             }
-            $config[$option[0]] = $value;
+
+            $snakeCaseKey = str_replace('-', '_', $option[0]);
+            if (array_key_exists($snakeCaseKey, $config)) {
+                $key = $snakeCaseKey;
+            }
+            $config[$key] = $value;
         }
 
         $config['db_types'] = $this->appConfig->get('eloquent_model_generator.db_types');
 
-        return new Config($config, $this->appConfig->get('eloquent_model_generator.model_defaults'));
+        return new Config($config);
     }
 
     /**

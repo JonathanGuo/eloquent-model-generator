@@ -2,6 +2,10 @@
 
 Eloquent Model Generator is a tool based on [Code Generator](https://github.com/JonathanGuo/code-generator) for generating Eloquent models.
 
+- Support Laravel 5 and 6.
+- Use [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper) to generate better DocBlock into models, which is more dev-friendly.
+- Auto generate `casts` and `softDeletes` trait.
+
 ## Why I created another generator?
 This package is based on [krlove/code-generator](https://github.com/krlove/eloquent-model-generator). The maintainer looks like not responding to GitHub any longer. So I mirrored the repo and do some customisation to meet my needs.   
 
