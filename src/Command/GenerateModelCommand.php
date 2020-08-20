@@ -93,7 +93,7 @@ class GenerateModelCommand extends Command
 
         foreach ($this->getOptions() as $option) {
             $key = $option[0];
-            if ($this->hasOption($key)) {
+            if (!$this->hasOption($key)) {
                 continue;
             }
 
