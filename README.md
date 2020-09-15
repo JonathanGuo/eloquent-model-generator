@@ -2,7 +2,7 @@
 
 Eloquent Model Generator is a tool based on [Code Generator](https://github.com/JonathanGuo/code-generator) for generating Eloquent models.
 
-- Support Laravel 5, 6 and 7.
+- Support Laravel 5, 6, 7 and 8.
 - Use [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper) to generate better DocBlock into models, which is more dev-friendly.
 - Auto generate `casts` and `softDeletes` trait.
 

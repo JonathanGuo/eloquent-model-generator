@@ -1,7 +1,7 @@
 {
     "name": "jonathanguo/eloquent-model-generator",
     "description": "Eloquent Model Generator",
-    "version": "2.0.11",
+    "version": "2.0.12",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -9,8 +9,8 @@
         }
     },
     "require": {
-        "illuminate/database": "^5.0 | ^6.0 | ^7.0",
-        "illuminate/support": "^5.0 | ^6.0 | ^7.0",
+        "illuminate/database": "^5.0 | ^6.0 | ^7.0 | ^8.0",
+        "illuminate/support": "^5.0 | ^6.0 | ^7.0 | ^8.0",
         "doctrine/dbal": "^2.5",
         "barryvdh/laravel-ide-helper": "^2.6",
         "jonathanguo/code-generator": "^1.0"
