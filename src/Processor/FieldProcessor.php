@@ -109,18 +109,20 @@ class FieldProcessor implements ProcessorInterface
                 return 'decimal:' . $column->getScale();
             case 'json':
                 return 'array';
-            /**
-             * Including:
-             *  - real
-             *  - float
-             *  - double
-             *  - string
-             *  - boolean
-             *  - date
-             *  - datetime
-             *  - timestamp
-             */
+            case 'text':
+                return 'string';
             default:
+                /**
+                 * Including:
+                 *  - real
+                 *  - float
+                 *  - double
+                 *  - string
+                 *  - boolean
+                 *  - date
+                 *  - datetime
+                 *  - timestamp
+                 */
                 return $typeName;
         }
     }
