@@ -110,6 +110,7 @@ class FieldProcessor implements ProcessorInterface
             case 'json':
                 return 'array';
             case 'text':
+            case 'guid':
                 return 'string';
             default:
                 /**
